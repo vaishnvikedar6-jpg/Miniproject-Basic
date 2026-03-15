@@ -148,7 +148,7 @@
                 <h3 style="margin-bottom: 10px; font-weight: 800;">Staff Login</h3>
                 <p style="color: var(--text-slate); font-size: 0.9rem; margin-bottom: 30px;">Enter your departmental credentials.</p>
                 
-                <form onsubmit="handleLogin(event, 'staff-workflow.html')">
+                <form onsubmit="handleLogin(event, 'staffworkflow.html')">
                     <div class="input-group">
                         <label>Email Address</label>
                         <input type="email" placeholder="faculty@siesgst.ac.in" required>
@@ -165,7 +165,7 @@
                 <h3 style="margin-bottom: 10px; font-weight: 800;">Command Center</h3>
                 <p style="color: var(--text-slate); font-size: 0.9rem; margin-bottom: 30px;">Elevated credentials required.</p>
                 
-                <form onsubmit="handleLogin(event, 'admin-portal.html')">
+                <form onsubmit="handleLogin(event, 'admindasboard.html')">
                     <div class="input-group">
                         <label>Admin ID</label>
                         <input type="text" placeholder="Executive ID" required>
@@ -184,11 +184,12 @@
         function switchForm(type) {
             // Update Toggle Buttons
             document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            // Use the button that was clicked
+            
+            // Logic to highlight the correct toggle button
             if (type === 'staff') {
-                document.querySelector('.toggle-btn:first-child').classList.add('active');
+                document.querySelector('.toggle-btn:nth-child(1)').classList.add('active');
             } else {
-                document.querySelector('.toggle-btn:last-child').classList.add('active');
+                document.querySelector('.toggle-btn:nth-child(2)').classList.add('active');
             }
 
             // Switch Form Visibility
@@ -196,10 +197,10 @@
             document.getElementById(type + '-form').classList.add('active');
         }
 
-        // This handles the onsubmit event from your forms
         function handleLogin(e, destination) {
-            e.preventDefault(); // Prevents the form from refreshing the page
-            console.log("Authenticating... Redirecting to: " + destination);
+            e.preventDefault(); 
+            // The browser will now navigate to your specific files:
+            // staffworkflow.html OR admindasboard.html
             window.location.href = destination;
         }
     </script>
