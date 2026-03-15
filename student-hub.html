@@ -3,205 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SGMS Elite | Secure Gateway</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>SGMS Elite | Student Hub</title>
     <style>
-        :root {
-            --primary-orange: #ff8c00;
-            --deep-orange: #e67e00;
-            --bg-light: #f8fafc;
-            --text-dark: #0f172a;
-            --text-slate: #64748b;
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-
         body {
-            background-color: var(--bg-light);
+            background: #fff5f0; 
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-            background-image: radial-gradient(#ff8c0010 1px, transparent 1px);
-            background-size: 30px 30px;
+            overflow-x: hidden;
+            padding: 20px;
         }
 
-        .login-container {
-            width: 900px;
-            background: #ffffff;
-            border-radius: 40px;
+        /* --- Sophisticated Navigation --- */
+        nav {
+            position: fixed;
+            top: 25px;
+            width: 90%;
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            padding: 12px 35px;
+            border-radius: 30px;
             display: flex;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.08);
-            overflow: hidden;
-            border: 1px solid #f1f5f9;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 15px 35px rgba(247, 37, 133, 0.05);
         }
 
-        /* --- LEFT SIDE: VISUAL --- */
-        .login-visual {
-            flex: 1;
-            background: linear-gradient(135deg, #ff8c00 0%, #f72585 100%);
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            color: white;
-            position: relative;
-        }
-
-        .login-visual h2 { font-size: 2.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-        .login-visual p { font-size: 1rem; opacity: 0.9; font-weight: 500; line-height: 1.6; }
-        .visual-footer { margin-top: auto; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; opacity: 0.6; }
-
-        /* --- RIGHT SIDE: FORMS --- */
-        .login-forms {
-            flex: 1.2;
-            padding: 60px;
-            background: white;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-toggle {
-            display: flex;
-            background: #f1f5f9;
-            padding: 6px;
-            border-radius: 16px;
-            margin-bottom: 40px;
-        }
-
-        .toggle-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: 0.3s;
-            background: transparent;
-            color: var(--text-slate);
-        }
-
-        .toggle-btn.active {
-            background: white;
-            color: var(--primary-orange);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; font-size: 0.8rem; font-weight: 800; color: var(--text-dark); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-        .input-group input {
-            width: 100%;
-            padding: 16px 20px;
-            border-radius: 14px;
-            border: 2px solid #f1f5f9;
-            background: #f8fafc;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: 0.3s;
-            outline: none;
-        }
-
-        .input-group input:focus { border-color: var(--primary-orange); background: white; }
-
-        .btn-login {
-            width: 100%;
-            padding: 18px;
-            background: var(--primary-orange);
-            color: white;
-            border: none;
-            border-radius: 16px;
-            font-size: 1rem;
+        .nav-logo {
+            font-size: 1.5rem;
             font-weight: 800;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(255, 140, 0, 0.25);
-            transition: 0.3s;
-            margin-top: 10px;
+            color: #4a041a;
+            text-decoration: none;
+            letter-spacing: -1px;
         }
 
-        .btn-login:hover { background: var(--deep-orange); transform: translateY(-2px); }
+        .nav-logo span {
+            background: linear-gradient(135deg, #f72585, #ffb703);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        .form-section { display: none; }
-        .form-section.active { display: block; animation: fadeIn 0.5s ease; }
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .nav-links a {
+            text-decoration: none;
+            color: #8a6a76;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #f72585;
+            transform: translateY(-2px);
+        }
+
+        .profile-trigger {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #4a041a;
+            padding: 6px 18px 6px 6px;
+            border-radius: 100px;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .profile-trigger:hover {
+            background: #f72585;
+            box-shadow: 0 10px 20px rgba(247, 37, 133, 0.2);
+        }
+
+        .avatar-circle {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, #f72585, #ffb703);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+
+        /* --- Main Hub Content --- */
+        .hub-content {
+            width: 100%;
+            max-width: 1000px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .welcome-text {
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .welcome-text h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #4a041a;
+            letter-spacing: -2px;
+        }
+
+        .welcome-text p {
+            color: #8a6a76;
+            font-weight: 600;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            perspective: 1500px;
+        }
+
+        .elite-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(25px);
+            padding: 70px 45px;
+            border-radius: 60px;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 25px 50px rgba(247, 37, 133, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .elite-card:hover {
+            transform: translateY(-20px) rotateX(4deg);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 50px 100px rgba(247, 37, 133, 0.15);
+            border-color: #f72585;
+        }
+
+        .card-icon {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border-radius: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            margin-bottom: 35px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.04);
+            transition: 0.5s;
+        }
+
+        .elite-card:hover .card-icon {
+            transform: scale(1.15) rotate(-5deg);
+            box-shadow: 0 20px 40px rgba(247, 37, 133, 0.1);
+        }
+
+        .elite-card h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #4a041a;
+            margin-bottom: 15px;
+        }
+
+        .elite-card p {
+            font-size: 1rem;
+            color: #8a6a76;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .action-tag {
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: #fff0f6;
+            border-radius: 100px;
+            color: #f72585;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            border: 1px solid #ffdeeb;
+        }
+
+        .elite-card:hover .action-tag {
+            background: linear-gradient(135deg, #f72585, #ffb703);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(247, 37, 133, 0.3);
+        }
+
+        /* Sparkle Script Style */
+        .magic-sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            animation: sparkleAnim 0.8s linear forwards;
+        }
+
+        @keyframes sparkleAnim {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0) translateY(30px); opacity: 0; }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="login-container">
-        <div class="login-visual">
-            <div style="font-weight: 800; font-size: 1.2rem; margin-bottom: 40px;">SGMS <span>Elite</span></div>
-            <h2>Secure Institutional Access</h2>
-            <p>Authorized personnel only. Your access is monitored for institutional integrity and security.</p>
-            <div class="visual-footer">SIES GST • SECURE FRAMEWORK 2026</div>
+    <nav>
+        <a href="student-hub.html" class="nav-logo">SGMS <span>Elite</span></a>
+        <ul class="nav-links">
+            <li><a href="student-hub.html">Home</a></li>
+            <li><a href="analytics.html">History</a></li>
+            <li><a href="support.html">Support</a></li>
+        </ul>
+        <a href="profile.html" class="profile-trigger">
+            <div class="avatar-circle">V</div>
+            Vaishnavi
+        </a>
+    </nav>
+
+    <div class="hub-content">
+        <div class="welcome-text">
+            <p>Welcome Back</p>
+            <h1>The <span>Elite</span> Experience</h1>
         </div>
 
-        <div class="login-forms">
-            <div class="form-toggle">
-                <button class="toggle-btn active" onclick="switchForm('staff')">Faculty Node</button>
-                <button class="toggle-btn" onclick="switchForm('admin')">Super Admin</button>
-            </div>
+        <div class="options-container">
+            <a href="file-complaint.html" class="elite-card">
+                <div class="card-icon">💌</div>
+                <h2>File Complaint</h2>
+                <p>Submit your grievances to department heads with total privacy and instant tracking.</p>
+                <div class="action-tag">File Now</div>
+            </a>
 
-            <div id="staff-form" class="form-section active">
-                <h3 style="margin-bottom: 10px; font-weight: 800;">Staff Login</h3>
-                <p style="color: var(--text-slate); font-size: 0.9rem; margin-bottom: 30px;">Enter your departmental credentials.</p>
-                
-                <form onsubmit="handleLogin(event, 'staff-workflow.html')">
-                    <div class="input-group">
-                        <label>Email Address</label>
-                        <input type="email" placeholder="faculty@siesgst.ac.in" required>
-                    </div>
-                    <div class="input-group">
-                        <label>Staff ID</label>
-                        <input type="password" placeholder="••••••••" required>
-                    </div>
-                    <button type="submit" class="btn-login">Enter Faculty Node</button>
-                </form>
-            </div>
-
-            <div id="admin-form" class="form-section">
-                <h3 style="margin-bottom: 10px; font-weight: 800;">Command Center</h3>
-                <p style="color: var(--text-slate); font-size: 0.9rem; margin-bottom: 30px;">Elevated credentials required.</p>
-                
-                <form onsubmit="handleLogin(event, 'admin-portal.html')">
-                    <div class="input-group">
-                        <label>Admin ID</label>
-                        <input type="text" placeholder="Executive ID" required>
-                    </div>
-                    <div class="input-group">
-                        <label>Secret Key</label>
-                        <input type="password" placeholder="••••••••" required>
-                    </div>
-                    <button type="submit" class="btn-login" style="background: var(--text-dark);">Authenticate Admin</button>
-                </form>
-            </div>
+            <a href="analytics.html" class="elite-card">
+                <div class="card-icon">✨</div>
+                <h2>View Analytics</h2>
+                <p>Track your resolution progress and view campus-wide efficiency statistics.</p>
+                <div class="action-tag">Check Status</div>
+            </a>
         </div>
     </div>
 
     <script>
-        function switchForm(type) {
-            // Update Toggle Buttons
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            // Use the button that was clicked
-            if (type === 'staff') {
-                document.querySelector('.toggle-btn:first-child').classList.add('active');
-            } else {
-                document.querySelector('.toggle-btn:last-child').classList.add('active');
-            }
-
-            // Switch Form Visibility
-            document.querySelectorAll('.form-section').forEach(form => form.classList.remove('active'));
-            document.getElementById(type + '-form').classList.add('active');
-        }
-
-        // This handles the onsubmit event from your forms
-        function handleLogin(e, destination) {
-            e.preventDefault(); // Prevents the form from refreshing the page
-            console.log("Authenticating... Redirecting to: " + destination);
-            window.location.href = destination;
-        }
+        // Sparkle Trail Effect
+        document.addEventListener('mousemove', function(e) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'magic-sparkle';
+            sparkle.style.left = e.pageX + 'px';
+            sparkle.style.top = e.pageY + 'px';
+            
+            const colors = ['#f72585', '#ffb703', '#ffffff', '#ffdeeb'];
+            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 800);
+        });
     </script>
 
 </body>
