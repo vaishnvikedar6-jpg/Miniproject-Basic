@@ -37,7 +37,6 @@
             border: 1px solid #f1f5f9;
         }
 
-        /* --- LEFT SIDE: VISUAL --- */
         .login-visual {
             flex: 1;
             background: linear-gradient(135deg, #ff8c00 0%, #f72585 100%);
@@ -53,7 +52,6 @@
         .login-visual p { font-size: 1rem; opacity: 0.9; font-weight: 500; line-height: 1.6; }
         .visual-footer { margin-top: auto; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; opacity: 0.6; }
 
-        /* --- RIGHT SIDE: FORMS --- */
         .login-forms {
             flex: 1.2;
             padding: 60px;
@@ -165,7 +163,7 @@
                 <h3 style="margin-bottom: 10px; font-weight: 800;">Command Center</h3>
                 <p style="color: var(--text-slate); font-size: 0.9rem; margin-bottom: 30px;">Elevated credentials required.</p>
                 
-                <form onsubmit="handleLogin(event, 'admindasboard.html')">
+                <form onsubmit="handleLogin(event, 'admindashboard.html')">
                     <div class="input-group">
                         <label>Admin ID</label>
                         <input type="text" placeholder="Executive ID" required>
@@ -182,25 +180,18 @@
 
     <script>
         function switchForm(type) {
-            // Update Toggle Buttons
             document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            
-            // Logic to highlight the correct toggle button
             if (type === 'staff') {
                 document.querySelector('.toggle-btn:nth-child(1)').classList.add('active');
             } else {
                 document.querySelector('.toggle-btn:nth-child(2)').classList.add('active');
             }
-
-            // Switch Form Visibility
             document.querySelectorAll('.form-section').forEach(form => form.classList.remove('active'));
             document.getElementById(type + '-form').classList.add('active');
         }
 
         function handleLogin(e, destination) {
             e.preventDefault(); 
-            // The browser will now navigate to your specific files:
-            // staffworkflow.html OR admindasboard.html
             window.location.href = destination;
         }
     </script>
